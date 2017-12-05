@@ -63,7 +63,7 @@ public class NfcFeliCaTagFragment extends Fragment {
      */
     public void onNewIntent(Intent intent) {
         String action = intent.getAction();
-        Log.d(TAG,"a");
+//        Log.d(TAG,"a");
         if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
             // IntentにTagの基本データが入ってくるので取得。
             tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
