@@ -17,11 +17,13 @@ import android.util.Log;
  *タブ画面の作成
  * [ViewPagerとTabLayoutを使用してタブのある画面を作る。] http://android.sakuraweb.com/wordpress/2016/05/07/viewpager%E3%81%A8tablayout%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%82%BF%E3%83%96%E3%81%AE%E3%81%82%E3%82%8B%E7%94%BB%E9%9D%A2%E3%82%92%E4%BD%9C%E3%82%8B%E3%80%82/
  * [Support design libraryのTabLayoutをタブレットで使用するときの注意点] https://qiita.com/Rompei/items/34f039aca8262c7897b2
+ * https://qiita.com/hisakioomae/items/ce63d5fefdc619f2f1c3
  */
-public class MainActivity extends AppCompatActivity implements NfcFeliCaTagFragment.INfcTagListener {
+public class MainActivity extends AppCompatActivity implements ReadNfcfFragment.INfcTagListener {
     // スライド用の部品
     private ViewPager mPager;
-    public static NfcFeliCaTagFragment mFeliCafragment;
+    public static ReadNfcfFragment  mReadNfcffragment;
+    public static WriteNfcfFragment mWriteNfcffragment;
 
     private static final String TAG = "MainActivity";
 
@@ -38,9 +40,11 @@ public class MainActivity extends AppCompatActivity implements NfcFeliCaTagFragm
         tabLayout.setupWithViewPager(mPager);
 
         //FeliCa, FeliCaLite用フラグメント
-        mFeliCafragment = new NfcFeliCaTagFragment();
+        mReadNfcffragment  = new ReadNfcfFragment();
+        mWriteNfcffragment = new WriteNfcfFragment();
         // カード発見時のリスナーの追加
-        mFeliCafragment.addNfcTagListener(this);
+        // writeはいらないや。readでさえつかってないし
+        mReadNfcffragment.addNfcTagListener(this);
 
         //インテントから起動された際の処理
         Intent intent = this.getIntent();
@@ -51,8 +55,11 @@ public class MainActivity extends AppCompatActivity implements NfcFeliCaTagFragm
     // Activityで受けたintentをFragmentに流す
     @Override
     protected void onNewIntent(Intent intent) {
-        if ( mFeliCafragment != null ) {
-            mFeliCafragment.onNewIntent(intent);
+        if ( mReadNfcffragment != null ) {
+            mReadNfcffragment.onNewIntent(intent);
+        }
+        if ( mWriteNfcffragment != null ) {
+            mWriteNfcffragment.onNewIntent(intent);
         }
     }
 
@@ -60,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NfcFeliCaTagFragm
     protected void onPause() {
         super.onPause();
         // カード発見時のリスナーを削除
-        mFeliCafragment.removeNfcTagListener(this);
+        mReadNfcffragment.removeNfcTagListener(this);
     }
 
     // カード発見時リスナー

@@ -5,7 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import static com.example.tama.studentcardsample.MainActivity.mFeliCafragment;
+import static com.example.tama.studentcardsample.MainActivity.mReadNfcffragment;
+import static com.example.tama.studentcardsample.MainActivity.mWriteNfcffragment;
 
 /**
  * Created by tama on 2017/12/05.
@@ -31,9 +32,9 @@ public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
         // fragmentを切り替える
         switch(position){
             case 0:
-                return mFeliCafragment;
+                return mReadNfcffragment;
             case 1:
-                return new NfcFeliCaTagFragment();
+                return mWriteNfcffragment;
         }
         return null;
     }
