@@ -71,6 +71,7 @@ public class NfcFeliCaTagFragment extends Fragment {
                 return;
             }else{
                 Log.d(TAG, "** nfcTag = " + tag.toString() );
+                usingTag(tag);
                 for ( INfcTagListener<NfcFeliCaTagFragment> listener : _listnerList ) {
                     //リスナに通知
                     listener.onTagDiscovered(intent, tag, this);
@@ -104,6 +105,10 @@ public class NfcFeliCaTagFragment extends Fragment {
                 , pendingIntent, intentFiltersArray, techListsArray);
 
     }
+    // クソみたいなメソッド名
+    // オーバライドして使う
+    public void usingTag(Tag tag){}
+
     public void addNfcTagListener(INfcTagListener<NfcFeliCaTagFragment> listener) {
         _listnerList.add(listener);
     }

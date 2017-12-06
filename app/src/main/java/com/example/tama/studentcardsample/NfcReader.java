@@ -20,10 +20,11 @@ public class NfcReader {
      * 指定したブロックからデータを読み出す
      * @param targetSystemCode  byte[] 指定するシステムコード
      * @param targetServiceCode byte[] 読み出す対象のサービスコード
+     * @param size 読み出すブロックサイズ
      * @return 取得データ
      * @throws IOException
      */
-    public byte[][] readTag(Tag tag, byte[] targetSystemCode, byte[] targetServiceCode) {
+    public byte[][] readTag(Tag tag,byte[] targetSystemCode, byte[] targetServiceCode, int size) {
         NfcF nfc = NfcF.get(tag);
         try {
             nfc.connect();
@@ -43,7 +44,7 @@ public class NfcReader {
             // Liteは4までしか読み込めない
             // Standardはサービスに設定されているブロック数以下まで読み込める
             // 学生証のサービス0x7A49のブロック数は12個
-            int size = 12;
+//            int size = 12;
 
             // 対象のサービスコード -> 0x104B
 //            byte[] targetServiceCode = new byte[]{(byte) 0x10, (byte) 0x4b};

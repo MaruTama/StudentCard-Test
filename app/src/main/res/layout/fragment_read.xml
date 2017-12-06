@@ -11,34 +11,43 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textview"
+            android:id="@+id/status_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_write" />
+            android:textSize="20dp"
+            android:text="@string/status" />
 
         <TextView
-            android:id="@+id/textview1"
+            android:id="@+id/student_number_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:textSize="30dp"
+            android:text="@string/student_number" />
 
         <TextView
-            android:id="@+id/textview2"
+            android:id="@+id/date_of_issue_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:textSize="30dp"
+            android:text="@string/date_of_issue" />
 
         <TextView
-            android:id="@+id/textview3"
+            android:id="@+id/expiration_date_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:textSize="30dp"
+            android:text="@string/expiration_date" />
 
+        <!-- 行間 -->
+        <!--　https://qiita.com/endoidou/items/2cf14bd71723328401d9　-->
         <TextView
-            android:id="@+id/textview4"
+            android:id="@+id/free_space_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:textSize="60dp"
+            android:lineSpacingMultiplier="0.75"
+            android:gravity="center_horizontal"
+            android:text=""/>
 
     </LinearLayout>
 </FrameLayout>

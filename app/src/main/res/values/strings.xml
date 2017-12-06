@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">StudentCardSample</string>
+    <string name="status">status :</string>
+    <string name="student_number">学籍番号 :</string>
+    <string name="date_of_issue">発行日　 :</string>
+    <string name="expiration_date">有効期限 :</string>
+
+</resources>

@@ -47,6 +47,11 @@ public class NfcWriter {
             // System のIDｍを取得(1バイト目はデータサイズ、2バイト目はレスポンスコード、IDmのサイズは8バイト)
             byte[] targetIDm = Arrays.copyOfRange(pollingRes, 2, 10);
 
+
+            if(data.length%16 != 0){
+                Log.d(TAG,"書き込むデータサイズを16byteの倍数にしてください");
+                return false;
+            }
             // サービスに含まれているデータのサイズ(16byteで1とする)
             // Liteは4までしか
             // Standardはサービスに設定されているブロック数以下まで読み込める
