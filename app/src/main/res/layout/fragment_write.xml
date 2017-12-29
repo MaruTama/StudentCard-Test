@@ -40,18 +40,23 @@
         <RadioGroup android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/RadioGroup">
-            <RadioButton android:text="1"
-                android:id="@+id/RadioButton1"
+            <RadioButton android:text="EditText"
+                android:id="@+id/rd_editText"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content">
             </RadioButton>
-            <RadioButton android:text="2"
-                android:id="@+id/RadioButtoni2"
+            <RadioButton android:text="Duckling"
+                android:id="@+id/rd_duckling"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </RadioButton>
-            <RadioButton android:text="3"
-                android:id="@+id/RadioButton3"
+            <RadioButton android:text="Plane"
+                android:id="@+id/rd_plane"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </RadioButton>
+            <RadioButton android:text="fablab?"
+                android:id="@+id/rd_fablab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </RadioButton>

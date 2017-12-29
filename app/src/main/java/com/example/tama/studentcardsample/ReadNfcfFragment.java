@@ -37,41 +37,6 @@ public class ReadNfcfFragment extends NfcFeliCaTagFragment {
         free_space_text_tv = (TextView) view.findViewById(R.id.free_space_text);
 
 
-//        free_space_text_tv.setText(
-//                "MMMMM#-0-#NMMMMM\n"  +
-//                "MMMV===HMMMN`MMM\n"  +
-//                "M/F=====MMMMMM`M\n"  +
-//                "|==M===MMMMMMM:|\n"  +
-//                "(MMMMMMMMM::::;)\n"  +
-//                "| M    NMM::M::|\n"  +
-//                "M`H  X  MMMM:;VM\n" +
-//                "MM\\   MMMM::;/MM\n"  +
-//                "MMN    MHMMVMMMM\n"  +
-//                "MMMMM#-0-#MMMMMM");
-
-
-        // Duckling
-        // http://textart.io/art/c9NAg7A_wuDi6a1aXIZICQeF/duckling
-//        free_space_text_tv.setText(
-//                                        "      ,~~.\n" +
-//                                        "     (  9 )-_,\n" +
-//                                        "(\\___)=='-'\n" +
-//                                        " \\ .   ) )\n" +
-//                                        "  \\ `-' /\n" +
-//                                        "   `~j-'   hjw\n" +
-//                                        "     \"=:");
-
-        // Plane
-        // http://textart.io/art/ngf3cXyEuTZy2e3Rt9h_9QeF/plane
-//        free_space_text_tv.setText(
-//                                " __\n" +
-//                                " \\  \\     _ _\n" +
-//                                "  \\**\\___\\/ \\\n" +
-//                                "X*#####*+^^\\_\\\n" +
-//                                "  o/\\  \\\n" +
-//                                "     \\__\\");
-
-
 
         return view;
     }
@@ -93,7 +58,8 @@ public class ReadNfcfFragment extends NfcFeliCaTagFragment {
         // 学生証のサービス0x7A49のブロック数は12個
         // だけど、書き込めるのは10個までなので、10までしか読み込まない
         bytes = nfcReader.readTag(tag, system_code, new byte[]{(byte) 0x7a, (byte) 0x49}, 10);
-        getFreeSpace(bytes);
+        String fs = getFreeSpace(bytes);
+        free_space_text_tv.setText(fs);
     }
     // system code  : 0x04B8
     // Service code : 0x104B
@@ -121,8 +87,11 @@ public class ReadNfcfFragment extends NfcFeliCaTagFragment {
         return ed.substring(0,8);
     }
     private String getFreeSpace(byte[][] bytes){
-
-        return null;
+        String fs = "";
+        for(int i=0; i<10; i++){
+            fs += new String(bytes[i])+"\n";
+        }
+        return fs;
     }
 
 }
