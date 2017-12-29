@@ -11,6 +11,22 @@
         android:orientation="vertical">
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_text"
+            android:textSize="20dp"
+            android:text="status" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/preview_text"
+            android:textSize="15dp"
+            android:lineSpacingMultiplier="0.75"
+            android:fontFamily="@font/cour"
+            android:text="" />
+
         <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
