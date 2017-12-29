@@ -17,7 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class NfcFeliCaTagFragment extends Fragment {
+public abstract class NfcFeliCaTagFragment extends Fragment {
     public static final String TAG = "NfcFeliCaTagFragment";
     private String[][] techListsArray;
     private IntentFilter[] intentFiltersArray;

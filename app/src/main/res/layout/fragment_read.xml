@@ -40,14 +40,16 @@
 
         <!-- 行間 -->
         <!--　https://qiita.com/endoidou/items/2cf14bd71723328401d9　-->
+        <!-- font -->
+        <!-- https://qiita.com/NUmeroDev/items/cb2f947b928a63479788 -->
         <TextView
             android:id="@+id/free_space_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="60dp"
+            android:textSize="20dp"
             android:lineSpacingMultiplier="0.75"
-            android:gravity="center_horizontal"
-            android:text=""/>
+            android:text=""
+            android:fontFamily="@font/cour"/>
 
     </LinearLayout>
 </FrameLayout>

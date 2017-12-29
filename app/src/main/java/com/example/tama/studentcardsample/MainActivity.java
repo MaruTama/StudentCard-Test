@@ -20,10 +20,16 @@ import android.util.Log;
  * https://qiita.com/hisakioomae/items/ce63d5fefdc619f2f1c3
  */
 public class MainActivity extends AppCompatActivity implements ReadNfcfFragment.INfcTagListener {
+
+    public static final int READ_FRAGMENT  = 0;
+    public static final int WRITE_FRAGMENT = 1;
+
     // スライド用の部品
     private ViewPager mPager;
     public static ReadNfcfFragment  mReadNfcffragment;
     public static WriteNfcfFragment mWriteNfcffragment;
+
+    public static int nowFragment = READ_FRAGMENT;
 
     private static final String TAG = "MainActivity";
 
@@ -55,11 +61,16 @@ public class MainActivity extends AppCompatActivity implements ReadNfcfFragment.
     // Activityで受けたintentをFragmentに流す
     @Override
     protected void onNewIntent(Intent intent) {
-        if ( mReadNfcffragment != null ) {
-            mReadNfcffragment.onNewIntent(intent);
-        }
-        if ( mWriteNfcffragment != null ) {
-            mWriteNfcffragment.onNewIntent(intent);
+        // 今表示中のFragmentのpositionを取得する
+        Log.d(TAG,String.valueOf(mPager.getCurrentItem()));
+
+        switch (mPager.getCurrentItem()){
+            case READ_FRAGMENT:
+                if ( mReadNfcffragment != null ) mReadNfcffragment.onNewIntent(intent);
+                break;
+            case WRITE_FRAGMENT:
+                if ( mWriteNfcffragment != null ) mWriteNfcffragment.onNewIntent(intent);
+                break;
         }
     }
 
@@ -70,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements ReadNfcfFragment.
         mReadNfcffragment.removeNfcTagListener(this);
     }
 
-    // カード発見時リスナー
+    // カード発見時リスナー(ReadFragment)
     @Override
     public void onTagDiscovered(Intent intent, Tag tag, Fragment fragment) {
         Log.d(TAG,"Card Discover!!");
